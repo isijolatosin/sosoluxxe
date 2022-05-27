@@ -68,7 +68,7 @@ const Register = () => {
 							or promotions from{' '}
 							<Link to="/">
 								<span className="navStyleChild tw-text-yellow-800">
-									hairposey.
+									Sosoluxxe.
 								</span>
 							</Link>
 						</p>

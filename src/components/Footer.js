@@ -56,7 +56,7 @@ function Footer() {
 		e.preventDefault()
 		try {
 			window.open(
-				`mailto:'hairposey@gmail.com'?subject=${contactInput.subject}&body=${contactInput.name}: ${contactInput.message}. My email is ${contactInput.email}`
+				`mailto:'sosoluxxe@gmail.com'?subject=${contactInput.subject}&body=${contactInput.name}: ${contactInput.message}. My email is ${contactInput.email}`
 			)
 			setcontactInput({
 				name: '',
@@ -104,10 +104,10 @@ function Footer() {
 					onSubmit={handleSubmit}
 					className="tw-w-full tw-flex tw-flex-col tw-items-center md:tw-max-w-[80%] tw-bg-neutral-50 tw-py-5 tw-mb-5">
 					<span className="tw-text-sm tw-font-light tw-mb-2">
-						Contact - Hairposey
+						Contact - Sosoluxxe
 					</span>
 					<p className="tw-font-light tw-text-[14px] tw-max-w-[80%] lg:tw-max-w-[50%] tw-my-5">
-						We at hairposey are customer centric, we take pride in our
+						We at Sosoluxxe are customer centric, we take pride in our
 						customers. We are committed in helping with picking the right hair
 						for you, adequate information regarding education on hair
 						maintenance, and providing high quality hair extensions. We value
@@ -646,7 +646,7 @@ function Footer() {
 						<br />
 						<br />
 						Questions about the Terms of Service should be sent to us at
-						hairposey@gmail.com.
+						Sosoluxxe@gmail.com.
 					</p>
 				</div>
 			)}
@@ -683,7 +683,7 @@ function Footer() {
 			<div className="tw-flex tw-text-xs tw-text-neutral-500 tw-font-light">
 				<div className="tw-pr-1 tw-border-r-2 tw-border-r-neutral-800 md:tw-flex">
 					<p className="">
-						&copy; {new Date().getUTCFullYear()} <span>hairposey</span>
+						&copy; {new Date().getUTCFullYear()} <span>Sosoluxxe</span>
 						<span> • All right reserved</span>
 					</p>
 				</div>
@@ -708,7 +708,7 @@ function Footer() {
 			</span>
 			<div className="tw-flex tw-justify-evenly tw-items-center tw-w-[80%] md:tw-w-[15%] tw-mt-3 tw-text-yellow-800">
 				<a
-					href="https://www.instagram.com/hairposey/"
+					href="https://www.instagram.com/Sosoluxxe/"
 					target="_blank"
 					rel="noopener noreferrer">
 					<AiOutlineInstagram
@@ -717,7 +717,7 @@ function Footer() {
 					/>
 				</a>
 				<a
-					href="https://www.tiktok.com/search?q=hairposey&t=1652981534762"
+					href="https://www.tiktok.com/search?q=Sosoluxxe&t=1652981534762"
 					target="_blank"
 					rel="noopener noreferrer">
 					<FaTiktok

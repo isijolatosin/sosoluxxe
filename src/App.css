@@ -765,3 +765,122 @@ label input::placeholder {
 		top: 0%;
 	}
 }
+
+.spin-container {
+	width: 100vw;
+	height: 30vh;
+	display: grid;
+	place-content: center;
+}
+.spin-container .gearbox {
+	height: 220px;
+	width: 340px;
+	margin-left: 30px;
+	overflow: hidden;
+	position: relative;
+	z-index: 20;
+	/* box-shadow: 0 0 20px 2px rgb(0, 0, 0); */
+}
+.gear {
+	height: 72px;
+	width: 72px;
+	position: relative;
+	border-radius: 50%;
+	background-color: rgb(88.85.85);
+	display: grid;
+	place-items: center;
+}
+.gearbox .one {
+	left: 30px;
+	top: 27px;
+	transform: rotate(0deg);
+	animation: clock-wise 4s linear infinite;
+}
+.gearbox .two {
+	left: 74px;
+	transform: rotate(0deg);
+	animation: anti-clock-wise 4s linear infinite;
+}
+.gearbox .three {
+	left: 28px;
+	top: -26px;
+	transform: rotate(0deg);
+	animation: clock-wise 4s linear infinite;
+}
+.gearbox .four {
+	left: 140px;
+	top: -178px;
+	height: 140px;
+	width: 140px;
+	transform: rotate(0deg);
+	animation: large-wise 8s linear infinite;
+}
+.gear-inner {
+	height: 60%;
+	width: 60%;
+	border-radius: 50%;
+	display: grid;
+	place-items: center;
+}
+.large .gear-inner {
+	height: 80%;
+	width: 80%;
+}
+.bar {
+	position: absolute;
+	height: 70px;
+	width: 15px;
+	border-radius: 5%;
+	/* background-color: rgb(110, 110, 110); */
+	background-color: rgb(85, 85, 85);
+}
+.inner-circle {
+	background-color: black;
+	height: 100%;
+	width: 100%;
+	z-index: 10;
+	border: 1px solid rgb(125, 120, 120);
+	border-radius: 50%;
+}
+.bar:nth-child(2) {
+	transform: rotate(60deg);
+}
+.bar:nth-child(3) {
+	transform: rotate(1200deg);
+}
+.large-bar {
+	position: absolute;
+	height: 140px;
+	width: 15px;
+	background-color: rgb(88, 85, 85);
+}
+.large-bar:nth-child(2) {
+	transform: rotate(30deg);
+}
+.large-bar:nth-child(3) {
+	transform: rotate(60deg);
+}
+.large-bar:nth-child(4) {
+	transform: rotate(90deg);
+}
+.large-bar:nth-child(5) {
+	transform: rotate(120deg);
+}
+.large-bar:nth-child(6) {
+	transform: rotate(150deg);
+}
+@keyframes clock-wise {
+	100% {
+		transform: rotateZ(-360deg);
+	}
+}
+@keyframes anti-clock-wise {
+	100% {
+		transform: rotateZ(360deg);
+	}
+}
+@keyframes large-wise {
+	100% {
+		transform: rotateZ(-360deg);
+	}
+}

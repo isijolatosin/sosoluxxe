@@ -5,9 +5,8 @@ import Layout from '../components/shared/Layout'
 import Products from '../components/Products'
 import { FaTiktok } from 'react-icons/fa'
 import { AiOutlineInstagram } from 'react-icons/ai'
-import { MdOutlineConstruction } from 'react-icons/md'
 
-const logo = require('../assets/logo.png')
+// const logo = require('../assets/logo.png')
 
 function HomePage() {
 	const [allProducts, setAllproducts] = React.useState([])

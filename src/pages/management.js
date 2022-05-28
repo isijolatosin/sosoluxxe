@@ -53,10 +53,10 @@ function Management() {
 				<div
 					className={
 						isSales
-							? 'tw-pt-[180px] lg:tw-pt-[110px] md:tw-pt-10 tw-flex tw-flex-col tw-w-[100vw] tw-items-center tw-bg-neutral-300'
+							? 'tw-pt-[140px] lg:tw-pt-[110px] md:tw-pt-10 tw-flex tw-flex-col tw-w-[100vw] tw-items-center tw-bg-neutral-300'
 							: 'tw-pt-[70px] md:tw-pt-10 tw-flex tw-flex-col tw-w-[100vw] tw-items-center tw-bg-neutral-300'
 					}>
-					<div className="tw-w-[90%] md:tw-w-[40%] tw-mb-10">
+					<div className="tw-w-[90%] md:tw-w-[40%] tw-mb-10 tw-pt-[50px]">
 						<label>
 							<input
 								type="text"

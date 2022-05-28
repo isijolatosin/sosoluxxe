@@ -8,7 +8,7 @@ import CursorText from '../shared/CursorText'
 function ImageComponent() {
 	const { user } = useContext(UserContext)
 	const [showText, setShowText] = React.useState(false)
-	const logo = require('../../assets/logo.png')
+	// const logo = require('../../assets/logo.png')
 
 	const handleShow = () => {
 		!showText && setShowText(true)
@@ -20,12 +20,15 @@ function ImageComponent() {
 		<div className="tw-relative tw-flex tw-flex-row tw-items-center -tw-ml-5">
 			<Link to="/">
 				<div className="tw-text-lg tw-font-extrabold tw-w-[100px]">
-					<img
+					<span className="tw-bg-clip-text tw-text-transparent tw-bg-gradient-to-r tw-from-yellow-900 tw-via-yellow-600 tw-to-yellow-700 tw-ml-10">
+						Sosoluxxe
+					</span>
+					{/* <img
 						src={logo}
 						loading="lazy"
 						className="tw-w-full"
 						alt="company-logo"
-					/>
+					/> */}
 				</div>
 			</Link>
 			{(SUPER_USER1 === user?.email || SUPER_USER2 === user?.email) && (

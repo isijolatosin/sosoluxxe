@@ -4,6 +4,7 @@ const stripe = require('stripe')(process.env.REACT_APP_STRIPE_PRIVATE_KEY)
 
 // domain/.netlify/functions/create-payment-intent
 exports.handler = async function (event, context) {
+	console.log(event.body)
 	if (event.body) {
 		// eslint-disable-next-line no-unused-vars
 		const { cartItems, shipping_fee, totalPrice, tax } = JSON.parse(event.body)
@@ -23,7 +24,7 @@ exports.handler = async function (event, context) {
 			try {
 				const paymentIntent = await stripe.paymentIntents.create({
 					amount: calculateOrderAmount(),
-					currency: 'usd',
+					currency: 'cad',
 				})
 
 				return {

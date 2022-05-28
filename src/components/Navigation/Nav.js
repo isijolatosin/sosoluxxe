@@ -6,7 +6,7 @@ import NavIcons from './NavIcons'
 function Nav() {
 	return (
 		<div>
-			<div className="tw-flex bg-blur3 tw-w-[100%] tw-grow tw-flex-row tw-items-center tw-justify-between tw-my-0 tw-mx-auto tw-h-[70px]">
+			<div className="tw-flex bg-blur4 tw-w-[100%] tw-grow tw-flex-row tw-items-center tw-justify-between tw-my-0 tw-mx-auto tw-h-[70px]">
 				<div>
 					<ImageComponent />
 				</div>

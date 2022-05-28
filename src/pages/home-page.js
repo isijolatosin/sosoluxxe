@@ -1,157 +1,204 @@
 import React from 'react'
-import axios from 'axios'
-import { Helmet } from 'react-helmet'
+import { loadStripe } from '@stripe/stripe-js'
+import { Elements } from '@stripe/react-stripe-js'
+import styled from 'styled-components'
+import Home from '../components/Home'
+import Book from '../components/Book'
 import Layout from '../components/shared/Layout'
-import Products from '../components/Products'
-import { FaTiktok } from 'react-icons/fa'
-import { AiOutlineInstagram } from 'react-icons/ai'
+import { Helmet } from 'react-helmet'
+import About from '../components/About'
 
-// const logo = require('../assets/logo.png')
+const promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY)
 
-function HomePage() {
-	const [allProducts, setAllproducts] = React.useState([])
-	const isReady = true
+const HomePage = () => {
+	const [showBooking, setShowBooking] = React.useState(false)
+	const [showProduct, setShowProduct] = React.useState(false)
+	const bottonTitle = [
+		{ title: 'Book for Hair appointment', id: 1 },
+		{ title: 'Go to product Page', id: 2 },
+	]
 
-	async function fetchProducts() {
-		try {
-			const {
-				data: {
-					products,
-					//  curUser
-				},
-			} = await axios.get('/api/v1/products')
-
-			setTimeout(() => {
-				setAllproducts(products.sort((a, b) => a.name.localeCompare(b.name)))
-			}, 3000)
-		} catch (error) {
-			console.log(error)
+	function handleDisplay(d) {
+		if (d.toLowerCase().includes('book')) {
+			setShowBooking(true)
+			setShowProduct(false)
+		} else if (d.toLowerCase().includes('product')) {
+			setShowProduct(true)
+			setShowBooking(false)
 		}
 	}
 
-	React.useEffect(() => {
-		fetchProducts()
-	}, [])
-
 	return (
-		<div className="tw-bg-neutral-200 relative">
+		<div className="tw-bg-neutral-200 relative home">
 			<Helmet>
 				<title>Home</title>
 			</Helmet>
 			<Layout>
-				<div className="tw-relative">
-					<div
-						className={`tw-flex tw-flex-col tw-items-center ${
-							allProducts.length === 0 ? 'tw-mt-[70px]' : 'tw-pt-[100px]'
-						} md:tw-py-[70px] lg:tw-w-[100%] xl:tw-w-[90%] 2xl:tw-w-[80%] lg:tw-mx-auto`}>
-						{allProducts.length !== 0 ? (
-							<Products allProducts={allProducts} />
-						) : (
-							<div className="tw-rounded-full progress">
-								<div className="inner"></div>
-							</div>
-						)}
-					</div>
-					{isReady && (
-						<div className="tw-z-40 tw-h-[100vh] tw-mt-[-70px] tw-w-[100%] bg-blur3 tw-absolute tw-top-0 tw-bottom-0 z-10 tw-items-center tw-justify-center tw-flex tw-flex-col">
-							<div className="tw-flex tw-flex-row tw-items-center tw-my-[50px]">
-								<span className="tw-text-xl tw-mb-10 tw-text-center tw-text tw-bg-clip-text tw-text-transparent tw-bg-gradient-to-r tw-from-yellow-900 tw-via-yellow-600 tw-to-yellow-700">
-									SOSOLUXXE
-								</span>
-								{/* <img src={logo} alt="company logo" /> */}
-							</div>
-							<div className="tw-relative tw-text-neutral-600 tw-text-[40px] md:tw-text-[40px] tw-flex tw-flex-col tw-items-center">
-								<span className="-tw-mb-0">UNDER</span>
-								<span>CONSTRUCTION</span>
-							</div>
-							<span className="tw-font-light tw-ml-5 tw-text-center tw-text-white tw-tracking-[12px] md:tw-tracking-[20px] tw-text-[10px]">
-								SITE ALMOST READY
-							</span>
-							<div className="spin-container">
-								<div className="gearbox">
-									<div className="gear one">
-										<div className="gear-inner">
-											<div className="bar"></div>
-											<div className="bar"></div>
-											<div className="bar"></div>
-											<div className="inner-circle"></div>
-										</div>
-									</div>
-									<div className="gear two">
-										<div className="gear-inner">
-											<div className="bar"></div>
-											<div className="bar"></div>
-											<div className="bar"></div>
-											<div className="inner-circle"></div>
-										</div>
-									</div>
-									<div className="gear three">
-										<div className="gear-inner">
-											<div className="bar"></div>
-											<div className="bar"></div>
-											<div className="bar"></div>
-											<div className="inner-circle"></div>
-										</div>
-									</div>
-									<div className="gear four large">
-										<div className="gear-inner">
-											<div className="large-bar"></div>
-											<div className="large-bar"></div>
-											<div className="large-bar"></div>
-											<div className="large-bar"></div>
-											<div className="large-bar"></div>
-											<div className="large-bar"></div>
-											<div className="inner-circle"></div>
-										</div>
-									</div>
-								</div>
-							</div>
-							{/* <div className="load-wrapper tw-mt-10">
-								<div className="circle"></div>
-								<div className="circle"></div>
-								<div className="circle"></div>
-							</div> */}
-							<div className="social-media-list tw-mt-[50px]">
-								<a
-									href="https://www.instagram.com/Sosoluxxe/"
-									target="_blank"
-									rel="noopener noreferrer">
-									<AiOutlineInstagram size={20} />
-								</a>
-								<a
-									href="https://www.tiktok.com/search?q=Sosoluxxe&t=1652981534762"
-									target="_blank"
-									rel="noopener noreferrer">
-									<FaTiktok size={20} />
-								</a>
-							</div>
-							<div className="tw-flex tw-text-xs tw-text-neutral-500 tw-font-light tw-mt-[50px] tw-mb-[30px]">
-								<div className="tw-pr-1 tw-border-r-2 tw-border-r-neutral-800 md:tw-flex">
-									<p className="">
-										&copy; {new Date().getUTCFullYear()} <span>Sosoluxxe</span>
-										<span> • All right reserved</span>
-									</p>
-								</div>
-								<div className="md:tw-flex tw-ml-1">
-									<p className="">
-										develop by{' '}
-										<span className="tw-text-yellow-600">
-											<a
-												href="https://www.linkedin.com/in/oluwatosin-isijola-33333ba8/"
-												target="_blank"
-												rel="noopener noreferrer">
-												- Tony Isijola
-											</a>
-										</span>
-									</p>
-								</div>
-							</div>
-						</div>
-					)}
+				<div className="tw-pt-[150px] md:tw-pt-[120px] tw-pb-[20px] tw-mb-[30px] tw-flex tw-flex-row tw-items-center tw-justify-center">
+					{bottonTitle.map((item) => (
+						<span
+							key={item.id}
+							onClick={() => handleDisplay(item.title)}
+							className="tw-capitalize tw-bg-neutral-500 tw-p-2 tw-rounded-sm tw-mx-2 tw-text-neutral-50 tw-font-light tw-text-xs hover:tw-bg-neutral-200 hover:tw-text-neutral-900 tw-ease tw-duration-300 hover:tw-cursor-pointer">
+							{item.title}
+						</span>
+					))}
 				</div>
+				{showBooking && (
+					<Wrapper>
+						<Elements stripe={promise}>
+							<Book />
+						</Elements>
+					</Wrapper>
+				)}
+				{showProduct && <Home />}
+				<About />
 			</Layout>
 		</div>
 	)
 }
+
+const Wrapper = styled.section`
+	form {
+		width: 30vw;
+		align-self: center;
+		box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),
+			0px 2px 5px 0px rgba(50, 50, 93, 0.1),
+			0px 1px 1.5px 0px rgba(0, 0, 0, 0.07);
+		border-radius: 7px;
+		padding-left: 10px;
+		padding-right: 10px;
+		/* padding-top: 30px; */
+		padding-bottom: 30px;
+	}
+
+	input {
+		border-radius: 6px;
+		margin-bottom: 6px;
+		padding: 12px;
+		border: 1px solid rgba(50, 50, 93, 0.1);
+		max-height: 44px;
+		font-size: 16px;
+		width: 100%;
+		background: white;
+		box-sizing: border-box;
+	}
+
+	.result-message {
+		line-height: 22px;
+		font-size: 16px;
+	}
+
+	.result-message a {
+		color: rgb(89, 111, 214);
+		font-weight: 600;
+		text-decoration: none;
+	}
+
+	.hidden {
+		display: none;
+	}
+
+	#card-error {
+		color: rgb(105, 115, 134);
+		font-size: 16px;
+		line-height: 20px;
+		margin-top: 12px;
+		text-align: center;
+	}
+
+	#card-element {
+		border-radius: 4px 4px 0 0;
+		padding: 12px;
+		border: 1px solid rgba(50, 50, 93, 0.1);
+		max-height: 44px;
+		width: 100%;
+		background: white;
+		box-sizing: border-box;
+	}
+
+	#payment-request-button {
+		margin-bottom: 32px;
+	}
+
+	button:hover {
+		filter: contrast(115%);
+	}
+
+	button:disabled {
+		opacity: 0.5;
+		cursor: default;
+	}
+
+	/* spinner/processing state, errors */
+	.spinner,
+	.spinner:before,
+	.spinner:after {
+		border-radius: 50%;
+	}
+
+	.spinner {
+		color: #ffffff;
+		font-size: 22px;
+		text-indent: -99999px;
+		margin: 0px auto;
+		position: relative;
+		width: 20px;
+		height: 20px;
+		box-shadow: inset 0 0 0 2px;
+		-webkit-transform: translateZ(0);
+		-ms-transform: translateZ(0);
+		transform: translateZ(0);
+	}
+
+	.spinner:before,
+	.spinner:after {
+		position: absolute;
+		content: '';
+	}
+
+	.spinner:before {
+		width: 10.4px;
+		height: 20.4px;
+		background: undefined;
+		border-radius: 20.4px 0 0 20.4px;
+		top: -0.2px;
+		left: -0.2px;
+		-webkit-transform-origin: 10.4px 10.2px;
+		transform-origin: 10.4px 10.2px;
+		-webkit-animation: loading 2s infinite ease 1.5s;
+		animation: loading 2s infinite ease 1.5s;
+	}
+
+	.spinner:after {
+		width: 10.4px;
+		height: 10.2px;
+		background: undefined;
+		border-radius: 0 10.2px 10.2px 0;
+		top: -0.1px;
+		left: 10.2px;
+		-webkit-transform-origin: 0px 10.2px;
+		transform-origin: 0px 10.2px;
+		-webkit-animation: loading 2s infinite ease;
+		animation: loading 2s infinite ease;
+	}
+
+	@keyframes loading {
+		0% {
+			-webkit-transform: rotate(0deg);
+			transform: rotate(0deg);
+		}
+		100% {
+			-webkit-transform: rotate(360deg);
+			transform: rotate(360deg);
+		}
+	}
+
+	@media only screen and (max-width: 600px) {
+		form {
+			width: 80vw;
+		}
+	}
+`
 
 export default HomePage

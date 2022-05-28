@@ -5,14 +5,14 @@ import storage from 'redux-persist/lib/storage'
 const persistConfig = {
 	key: 'root',
 	storage,
-	whitelist: ['cartItems', 'itemCount', 'total'],
+	whitelist: ['cartItems', 'itemCount', 'total', 'booking'],
 }
 
 const initialState = {
 	cartItems: [],
 	itemCount: 0,
 	total: 0,
-	bookingObject: '',
+	booking: [],
 }
 
 export const appSlices = createSlice({
@@ -136,8 +136,10 @@ export const appSlices = createSlice({
 			state.itemCount = 0
 			state.total = 0
 		},
-		setBookingObject: (state, action) => {
-			state.bookingObject = action.payload
+		setBooking: (state, action) => {
+			state.booking.push({
+				...action.payload,
+			})
 		},
 	},
 })
@@ -148,14 +150,14 @@ export const {
 	decreaseCartItem,
 	removeCartItem,
 	clearCartItem,
-	setBookingObject,
+	setBooking,
 } = appSlices.actions
 
 // Selectors
 export const selectCartItems = (state) => state.app.cartItems
 export const selectItemCount = (state) => state.app.itemCount
 export const selectTotal = (state) => state.app.total
-export const selectBookingObject = (state) => state.app.bookingObject
+export const selectBooking = (state) => state.app.booking
 
 const rootReducer = appSlices.reducer
 

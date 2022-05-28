@@ -149,6 +149,7 @@ function Book() {
 			.add({
 				date: selectDate,
 				customer: user?.displayName || userEmail,
+				email: user?.email || userEmail,
 				category: bookingData.category,
 				session: bookingData.session,
 				service: bookingData.service,
@@ -163,6 +164,7 @@ function Book() {
 			setBooking({
 				date: selectDate,
 				customer: user?.displayName || userEmail,
+				email: user?.email || userEmail,
 				category: bookingData.category,
 				session: bookingData.session,
 				service: bookingData.service,
@@ -369,7 +371,9 @@ function Book() {
 										bookingData.category &&
 										bookingData.session &&
 										selectDate &&
-										userEmail && <Button type="submit">Submit Booking</Button>}
+										(userEmail || user?.email) && (
+											<Button type="submit">Submit Booking</Button>
+										)}
 								</div>
 							</div>
 						</form>
@@ -432,30 +436,28 @@ function Book() {
 									{_error}
 								</div>
 							)}
-							<div className="tw-w-[90%] tw-mx-auto tw-pt-1">
-								<p
-									className={
-										succeeded &&
-										'tw-text-center tw-text-xs tw-font-light tw-mt-2 tw-text-green-500'
-									}>
-									Payment Succeeded.
-									{user?.email === 'tisijola7@gmail.com' && (
-										<span>
-											{' '}
-											see the result in your
-											<a
-												className="tw-text-blue-600"
-												href={`https://dashboard.stripe.com/test/payments`}
-												target="_blank"
-												rel="noreferrer">
+							{succeeded && (
+								<div className="tw-w-[90%] tw-mx-auto tw-pt-1">
+									<p className="tw-text-center tw-text-xs tw-font-light tw-mt-2 tw-text-green-500">
+										Payment Succeeded.
+										{user?.email === 'tisijola7@gmail.com' && (
+											<span>
 												{' '}
-												Stripe Dashboard
-											</a>
-										</span>
-									)}{' '}
-									Page will refresh in 10 seconds...
-								</p>
-							</div>
+												see the result in your
+												<a
+													className="tw-text-blue-600"
+													href={`https://dashboard.stripe.com/test/payments`}
+													target="_blank"
+													rel="noreferrer">
+													{' '}
+													Stripe Dashboard.
+												</a>
+											</span>
+										)}{' '}
+										Page will refresh in 10 seconds...
+									</p>
+								</div>
+							)}
 						</form>
 					</div>
 				</div>

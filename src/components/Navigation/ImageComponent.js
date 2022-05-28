@@ -17,10 +17,10 @@ function ImageComponent() {
 		setShowText(false)
 	}
 	return (
-		<div className="tw-relative tw-flex tw-flex-row tw-items-center -tw-ml-5">
+		<div className="tw-relative tw-flex tw-flex-row tw-items-center">
 			<Link to="/">
 				<div className="tw-text-lg tw-font-extrabold tw-w-[100px]">
-					<span className="tw-bg-clip-text tw-text-transparent tw-bg-gradient-to-r tw-from-yellow-900 tw-via-yellow-600 tw-to-yellow-700 tw-ml-10">
+					<span className="tw-bg-clip-text tw-text-transparent tw-bg-gradient-to-r tw-from-yellow-900 tw-via-yellow-600 tw-to-yellow-700 tw-ml-2">
 						Sosoluxxe
 					</span>
 					{/* <img
@@ -34,7 +34,7 @@ function ImageComponent() {
 			{(SUPER_USER1 === user?.email || SUPER_USER2 === user?.email) && (
 				<Link
 					to="/admin-portal"
-					className="tw-absolute -tw-right-5 tw-top-[20%]"
+					className="tw-ml-2"
 					onMouseOver={handleShow}
 					onMouseOut={handleHide}>
 					<div className="tw-w-30 tw-h-30 tw-p-2 tw-text-black tw-text-xl hover:tw-cursor-pointer tw-bg-neutral-600 tw-rounded-full tw-ease-in tw-duration-300">

@@ -7,10 +7,10 @@ function Nav() {
 	return (
 		<div>
 			<div className="tw-flex bg-blur4 tw-w-[100%] tw-grow tw-flex-row tw-items-center tw-justify-between tw-my-0 tw-mx-auto tw-h-[70px]">
-				<div>
+				<div className="tw-flex-0.2">
 					<ImageComponent />
 				</div>
-				<div className="tw-hidden md:tw-inline tw-flex-0.8">
+				<div className="tw-hidden md:tw-inline tw-flex-0.6">
 					<LinksComponent />
 				</div>
 				<div className="tw-flex-0.1">

@@ -12,8 +12,6 @@ import { GoAlert } from 'react-icons/go'
 import axios from 'axios'
 import { db } from '../firebase'
 import { AUTHORIZED_ID } from '../constant'
-import { setBooking, selectBooking } from '../slices/appSlices'
-import { useDispatch, useSelector } from 'react-redux'
 
 const categories = [
 	{ name: 'Category', id: 1 },
@@ -37,12 +35,10 @@ const sessions = [
 ]
 
 function Book() {
-	const dispatch = useDispatch()
 	const dateToday = new Date()
 	const elements = useElements()
 	const stripe = useStripe()
 	const { user } = useContext(UserContext)
-	const noOfBookings = useSelector(selectBooking)
 	const [bookArr, setBookArr] = React.useState([])
 	const [selectDate, setSelectDate] = React.useState(null)
 	const [succeeded, setSucceeded] = React.useState(false)
@@ -64,15 +60,25 @@ function Book() {
 			setSelectDate(null)
 		}
 		if (ranges > dateToday) {
-			const dt = noOfBookings.filter(
-				(booking) => booking.date === ranges.toDateString()
-			)
-			setBookArr(dt)
-			if (dt.length === 3) {
-				return
-			} else {
-				setSelectDate(ranges.toDateString())
-			}
+			db.collection('bookings')
+				.doc(`${AUTHORIZED_ID.id_one}/`)
+				.collection(ranges.toDateString())
+				.onSnapshot((snapshot) => {
+					const results = snapshot.docs.map((doc) => ({
+						data: doc.data(),
+					}))
+					console.log(results)
+					const dt = results?.filter(
+						(booking) => booking?.data.date === ranges.toDateString()
+					)
+					console.log(dt)
+					setBookArr(dt)
+					if (dt.length === 3) {
+						return
+					} else {
+						setSelectDate(ranges.toDateString())
+					}
+				})
 		}
 	}
 
@@ -160,17 +166,17 @@ function Book() {
 			})
 			.catch((error) => console.log('Error' + error.message))
 
-		dispatch(
-			setBooking({
-				date: selectDate,
-				customer: user?.displayName || userEmail,
-				email: user?.email || userEmail,
-				category: bookingData.category,
-				session: bookingData.session,
-				service: bookingData.service,
-				personnel: bookingData.personnel,
-			})
-		)
+		// dispatch(
+		// 	setBooking({
+		// 		date: selectDate,
+		// 		customer: user?.displayName || userEmail,
+		// 		email: user?.email || userEmail,
+		// 		category: bookingData.category,
+		// 		session: bookingData.session,
+		// 		service: bookingData.service,
+		// 		personnel: bookingData.personnel,
+		// 	})
+		// )
 
 		setUserEmail('')
 		setSelectDate('')

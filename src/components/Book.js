@@ -46,6 +46,7 @@ function Book() {
 	const [_error, set_Error] = React.useState(null)
 	const [disabled, setDisabled] = React.useState(true)
 	const [clientSecret, setClientSecret] = React.useState('')
+	const [location, setLocation] = React.useState(null)
 	const [allowproceed, setAllowProceed] = React.useState(false) //CHANGE BACK TO FALSE
 	const [bookingData, setBookingData] = React.useState({
 		session: '',
@@ -54,6 +55,15 @@ function Book() {
 		personnel: '',
 	})
 	const [userEmail, setUserEmail] = React.useState('')
+
+	React.useEffect(() => {
+		db.collection('location').onSnapshot((snapshot) => {
+			const results = snapshot.docs.map((doc) => ({
+				data: doc.data(),
+			}))
+			setLocation(results[0].data.location)
+		})
+	}, [])
 
 	const handleSelect = (ranges) => {
 		if (selectDate) {
@@ -166,18 +176,6 @@ function Book() {
 			})
 			.catch((error) => console.log('Error' + error.message))
 
-		// dispatch(
-		// 	setBooking({
-		// 		date: selectDate,
-		// 		customer: user?.displayName || userEmail,
-		// 		email: user?.email || userEmail,
-		// 		category: bookingData.category,
-		// 		session: bookingData.session,
-		// 		service: bookingData.service,
-		// 		personnel: bookingData.personnel,
-		// 	})
-		// )
-
 		setUserEmail('')
 		setSelectDate('')
 		setBookingData({
@@ -250,11 +248,14 @@ function Book() {
 	return (
 		<div className="bg-blur3 tw-flex tw-flex-col lg:tw-flex-row tw-width-full tw-p-5 lg:tw-pl-0 tw-mx-auto  tw-mb-10">
 			<div className="tw-flex tw-flex-col tw-items-center lg:tw-mx-auto lg:tw-pl-[10px] lg:tw-flex-1 lg-tw-w-full">
-				<div className="tw-text-neutral-300 tw-text-2xl tw-mt-[30px] tw-mb-[50px] tw-px-[10px] tw-py-1">
+				<div className="tw-text-neutral-300 tw-text-center tw-text-2xl tw-mt-[30px] tw-mb-[50px] tw-px-[10px] tw-py-1">
 					<h2>
 						For Your Hair Appointment, Schedule{' '}
 						<span className="tw-text-pink-400">Now!</span>
 					</h2>
+					<span className="tw-text-green-500 tw-text-sm tw-font-light">
+						Currently, we are in {location}
+					</span>
 				</div>
 				<div className=" tw-p-2 lg:tw-p-5 xl:tw-pr-[20px] tw-flex tw-flex-col lg:tw-flex-row  xl:tw-flex-row">
 					<div className="tw-flex tw-flex-col tw-items-center tw-mt-[-40px] tw-px-5 lg:tw-mr-10">

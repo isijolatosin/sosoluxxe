@@ -7,11 +7,14 @@ import Shippment from '../components/Shippment'
 import { BsFillArrowUpSquareFill } from 'react-icons/bs'
 import AllInventories from '../components/AllInventories'
 import { UserContext } from '../context/user-context'
+import { db } from '../firebase'
+import { AUTHORIZED_ID } from '../constant'
 
 function Management() {
 	const [section, setSection] = React.useState('all-inventory')
 	const { user } = useContext(UserContext)
 	const isSales = localStorage.getItem('isSales')
+	const [location, setLocation] = React.useState('')
 
 	const toggleSection = (e) => {
 		setSection(e.target.id)
@@ -29,6 +32,18 @@ function Management() {
 		}
 	}
 
+	const handleLocation = (e) => {
+		e.preventDefault()
+		setLocation(e.target.value)
+	}
+	const handleSubmitLoc = (e) => {
+		e.preventDefault()
+		db.collection('location')
+			.doc(`${AUTHORIZED_ID.id_one}/`)
+			.set({ location: location }, { merge: true })
+		setLocation('')
+	}
+
 	return (
 		<>
 			<Helmet>
@@ -38,9 +53,33 @@ function Management() {
 				<div
 					className={
 						isSales
-							? 'tw-mt-[140px] lg:tw-mt-[110px] tw-pt-20 md:tw-pt-10 tw-flex tw-flex-col tw-w-[100vw] tw-items-center tw-bg-neutral-300'
-							: 'tw-mt-[70px] tw-pt-20 md:tw-pt-10 tw-flex tw-flex-col tw-w-[100vw] tw-items-center tw-bg-neutral-300'
+							? 'tw-pt-[140px] lg:tw-pt-[110px] md:tw-pt-10 tw-flex tw-flex-col tw-w-[100vw] tw-items-center tw-bg-neutral-300'
+							: 'tw-pt-[70px] md:tw-pt-10 tw-flex tw-flex-col tw-w-[100vw] tw-items-center tw-bg-neutral-300'
 					}>
+					<div className="tw-w-[90%] md:tw-w-[40%] tw-mb-10">
+						<label>
+							<input
+								type="text"
+								autoComplete="off"
+								placeholder=" "
+								name="email"
+								id="email"
+								value={location}
+								onChange={(e) => handleLocation(e)}
+								className="tw-shadow-xl"
+							/>
+							<p>Current Location...</p>
+						</label>
+						<div className="tw-w-full tw-flex tw-flex-row tw-justify-center tw-mt-5">
+							<button
+								onClick={handleSubmitLoc}
+								type="button"
+								className="btn tw-bg-neutral-100 tw-text-xs hover:tw-bg-neutral-400 hover:tw-text-neutral-100">
+								Lock-in Location
+							</button>
+						</div>
+					</div>
+
 					<Heading>Admin portal</Heading>
 					<div className="tw-my-5 tw-w-[100%] tw-text-violet-700">
 						<ul className="tw-flex tw-text-xs tw-flex-row tw-items-center tw-justify-between tw-w-[90%] lg:tw-w-[50%] tw-mx-auto">

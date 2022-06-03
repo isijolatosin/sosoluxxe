@@ -692,7 +692,13 @@ label input::placeholder {
 .social-media-list a:hover::before {
 	transform: rotate(45deg) translate(15%, 100%);
 }
+.navStyle {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
 .navStyleChild {
+	padding-bottom: 2px;
 	position: relative;
 }
 .navStyleChild::after {
@@ -700,7 +706,7 @@ label input::placeholder {
 	content: '';
 	width: 0%;
 	height: 1px;
-	background-color: rgb(133 77 14);
+	background-color: rgb(255, 170, 0);
 	left: 50%;
 	bottom: 0px;
 	transition: all 0.3s ease-in-out;
@@ -711,6 +717,7 @@ label input::placeholder {
 }
 .navStyleChildWhite {
 	position: relative;
+	padding-bottom: 5px;
 }
 .navStyleChildWhite::after {
 	position: absolute;
@@ -902,4 +909,26 @@ label input::placeholder {
 			rgba(0, 0, 0, 0.85)
 		),
 		url('https://res.cloudinary.com/dhdccvkyt/image/upload/v1653691084/sosolux/general/WhatsApp_Image_2022-05-27_at_5.41.16_PM_zgwtk9.jpg');
+}
+.plumpMenu {
+	position: fixed;
+	top: -125px;
+	right: -100px;
+	width: 45%;
+	height: 400px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	justify-content: flex-start;
+	visibility: hidden;
+	overflow: hidden;
+	transform: scale(0);
+	transition: all 0.4s ease;
+}
+.plumpMenuClick {
+	top: 72px;
+	right: 0;
+	transform: scale(1);
+	visibility: visible;
+	transition-duration: 0.5s;
 }

@@ -8,10 +8,11 @@ import Button from './shared/Button'
 import { UserContext } from '../context/user-context'
 import { SiAmericanexpress, SiMastercard } from 'react-icons/si'
 import { RiVisaLine } from 'react-icons/ri'
+import { MdLocationPin } from 'react-icons/md'
 import { GoAlert } from 'react-icons/go'
 import axios from 'axios'
 import { db } from '../firebase'
-import { AUTHORIZED_ID } from '../constant'
+import { AUTHORIZED_ID, googleSearch } from '../constant'
 
 const categories = [
 	{ name: 'Category', id: 1 },
@@ -248,14 +249,22 @@ function Book() {
 	return (
 		<div className="bg-blur3 tw-flex tw-flex-col lg:tw-flex-row tw-width-full tw-p-5 lg:tw-pl-0 tw-mx-auto  tw-mb-10">
 			<div className="tw-flex tw-flex-col tw-items-center lg:tw-mx-auto lg:tw-pl-[10px] lg:tw-flex-1 lg-tw-w-full">
-				<div className="tw-text-neutral-300 tw-text-center tw-text-2xl tw-mt-[30px] tw-mb-[50px] tw-px-[10px] tw-py-1">
+				<div className="tw-text-neutral-300 tw-text-center tw-text-2xl tw-mt-[20px] tw-mb-[70px] tw-px-[10px] tw-py-1">
+					<a
+						href={`${googleSearch + location}`}
+						target="_blank"
+						rel="noreferrer"
+						className="tw-flex-col tw-text-neutral-400 tw-text-xs tw-font-light tw-flex tw-items-center tw-justify-center tw-mb-7 hover:tw-text-neutral-600 tw-ease tw-duration-300 ">
+						<MdLocationPin size={35} className="tw-text-red-700 tw-mb-2" />
+						<span className="navStyleChildWhite">
+							<span className="tw-text-green-500">Currently</span>, we are in{' '}
+							{location}
+						</span>
+					</a>
 					<h2>
 						For Your Hair Appointment, Schedule{' '}
 						<span className="tw-text-pink-400">Now!</span>
 					</h2>
-					<span className="tw-text-green-500 tw-text-sm tw-font-light">
-						Currently, we are in {location}
-					</span>
 				</div>
 				<div className=" tw-p-2 lg:tw-p-5 xl:tw-pr-[20px] tw-flex tw-flex-col lg:tw-flex-row  xl:tw-flex-row">
 					<div className="tw-flex tw-flex-col tw-items-center tw-mt-[-40px] tw-px-5 lg:tw-mr-10">

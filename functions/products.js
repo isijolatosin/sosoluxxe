@@ -18,7 +18,7 @@ cloudinary.config({
 const app = express()
 
 app.get('/', (req, res) => {
-	res.send('model est app')
+	res.send('sosoluxxe app')
 })
 
 // middleware

@@ -8,7 +8,7 @@ import CursorText from '../shared/CursorText'
 function ImageComponent() {
 	const { user } = useContext(UserContext)
 	const [showText, setShowText] = React.useState(false)
-	// const logo = require('../../assets/logo.png')
+	const logo = require('../../assets/logo.png')
 
 	const handleShow = () => {
 		!showText && setShowText(true)
@@ -19,25 +19,21 @@ function ImageComponent() {
 	return (
 		<div className="tw-relative tw-flex tw-flex-row tw-items-center">
 			<Link to="/">
-				<div className="tw-text-lg tw-font-extrabold tw-w-[100px]">
-					<span className="tw-bg-clip-text tw-text-transparent tw-bg-gradient-to-r tw-from-yellow-900 tw-via-yellow-600 tw-to-yellow-700 tw-ml-2">
-						Sosoluxxe
-					</span>
-					{/* <img
-						src={logo}
-						loading="lazy"
-						className="tw-w-full"
-						alt="company-logo"
-					/> */}
-				</div>
+				<img
+					src={logo}
+					loading="lazy"
+					className="tw-w-[140px] tw-pb-1 tw-mr-5 tw-h-[60px] tw-object-cover tw-border-r-[1px] tw-border-neutral-700 tw-ml-[-30px]"
+					alt="company-logo"
+				/>
+				{/* </div> */}
 			</Link>
 			{(SUPER_USER1 === user?.email || SUPER_USER2 === user?.email) && (
 				<Link
 					to="/admin-portal"
-					className="tw-ml-2"
+					className="tw-ml-2 tw-relative"
 					onMouseOver={handleShow}
 					onMouseOut={handleHide}>
-					<div className="tw-w-30 tw-h-30 tw-p-2 tw-text-black tw-text-xl hover:tw-cursor-pointer tw-bg-neutral-600 tw-rounded-full tw-ease-in tw-duration-300">
+					<div className="tw-w-30 tw-h-30 tw-p-2 tw-mr-5 tw-text-black tw-text-xl hover:tw-cursor-pointer tw-bg-neutral-600 tw-rounded-full tw-ease-in tw-duration-300">
 						<RiDatabase2Fill />
 					</div>
 					<CursorText showText={showText}>Admin</CursorText>

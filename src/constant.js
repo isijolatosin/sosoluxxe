@@ -15,9 +15,11 @@ export const installmentStartPrice = 29900
 
 // Back end url
 export const HTTPS_LINK = 'http://localhost:5000'
-// export const HTTPS_LINK = 'https://www.model-est.com'
+// export const HTTPS_LINK = 'https://www.sosoluxxe.com'
 
 export const AUTHORIZED_ID = {
 	id_one: 'sosoluxxe@gmail.com',
 	id_two: 'tisijola7@gmail.com',
 }
+
+export const googleSearch = 'https://www.google.com/maps/search/'

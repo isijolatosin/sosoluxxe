@@ -4,15 +4,14 @@ function About() {
 	return (
 		<div className="tw-w-full bg-blur">
 			<div className="tw-relative tw-px-10 tw-pt-10 md:tw-w-[80%] md:tw-mx-auto tw-pb-10">
-				<div className="tw-hidden sm:tw-block tw-absolute tw-shadow-lg tw-top-10 tw-left-14 tw-w-64 tw-h-[300px] tw-bg-pink-400 sm:tw-rounded-full [clip-path:var(--my-shape)] [shape-outside:var(--my-shape)] sm:[--my-shape:polygon(0%_0%,100%_0%,75%_100%,0%_100%)]"></div>
+				<div className="tw-hidden sm:tw-block tw-absolute tw-shadow-lg tw-top-10 tw-left-14 tw-w-[500px] tw-h-[700px] tw-bg-pink-400 sm:tw-rounded-full [clip-path:var(--my-shape)] [shape-outside:var(--my-shape)] sm:[--my-shape:polygon(0%_0%,100%_0%,75%_100%,0%_100%)]"></div>
 				<img
-					className="tw-w-64 tw-h-[300px] tw-float-left tw-aspect-[1/1] lg:tw-aspect-[1/2] sm:tw-rounded-full tw-shadow-lg tw-object-cover tw-object-bottom tw-mb-0 tw-mr-6 [clip-path:var(--my-shape)] [shape-outside:var(--my-shape)] sm:[--my-shape:polygon(0%_0%,100%_0%,75%_100%,0%_100%)]"
+					className="tw-w-[500px] tw-h-[700px] tw-float-left tw-aspect-[1/1] lg:tw-aspect-[1/2] sm:tw-rounded-full tw-shadow-lg tw-object-cover tw-object-center tw-mb-0 tw-mr-6 [clip-path:var(--my-shape)] [shape-outside:var(--my-shape)] sm:[--my-shape:polygon(0%_0%,100%_0%,75%_100%,0%_100%)]"
 					src={aboutImg}
 					alt="About_Photo"
 				/>
 				<h1 className="tw-text-2xl tw-font-bold">ABOUT SOSOLUXXE</h1>
 				<div className="tw-relative">
-					<div className="tw-bg-clip-border tw-p-0.5 tw-mt-[-5px] tw-mb-[20px] tw-w-[40px] tw-ml-[280px] tw tw-bg-pink-400"></div>
 					<h3 className="tw-font-semibold tw-text-neutral-400 tw-mb-[15px]">
 						OFFERING THE BEST HAIR PRODUCTS
 					</h3>

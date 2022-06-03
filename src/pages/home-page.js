@@ -20,10 +20,10 @@ const HomePage = () => {
 
 	function handleDisplay(d) {
 		if (d.toLowerCase().includes('book')) {
-			setShowBooking(true)
+			setShowBooking(!showBooking)
 			setShowProduct(false)
 		} else if (d.toLowerCase().includes('product')) {
-			setShowProduct(true)
+			setShowProduct(!showProduct)
 			setShowBooking(false)
 		}
 	}

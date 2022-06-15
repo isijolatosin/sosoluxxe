@@ -78,7 +78,7 @@ function Book() {
 					const results = snapshot.docs.map((doc) => ({
 						data: doc.data(),
 					}))
-					console.log(results)
+					// console.log(results)
 					const dt = results?.filter(
 						(booking) => booking?.data.date === ranges.toDateString()
 					)
@@ -255,7 +255,7 @@ function Book() {
 						target="_blank"
 						rel="noreferrer"
 						className="tw-flex-col tw-text-neutral-400 tw-text-xs tw-font-light tw-flex tw-items-center tw-justify-center tw-mb-7 hover:tw-text-neutral-600 tw-ease tw-duration-300 ">
-						<MdLocationPin size={35} className="tw-text-red-700 tw-mb-2" />
+						<MdLocationPin size={35} className="tw-text-yellow-500 tw-mb-2" />
 						<span className="navStyleChildWhite">
 							<span className="tw-text-green-500">Currently</span>, we are in{' '}
 							{location}
@@ -263,14 +263,14 @@ function Book() {
 					</a>
 					<h2>
 						For Your Hair Appointment, Schedule{' '}
-						<span className="tw-text-pink-400">Now!</span>
+						<span className="tw-text-yellow-500">Now!</span>
 					</h2>
 				</div>
 				<div className=" tw-p-2 lg:tw-p-5 xl:tw-pr-[20px] tw-flex tw-flex-col lg:tw-flex-row  xl:tw-flex-row">
 					<div className="tw-flex tw-flex-col tw-items-center tw-mt-[-40px] tw-px-5 lg:tw-mr-10">
 						<div className="xl:tw-ml-0">
 							<Calendar
-								color="pink"
+								color="orange"
 								date={new Date()}
 								onChange={handleSelect}
 								dateDisplayFormat="yyyy-MM-dd"

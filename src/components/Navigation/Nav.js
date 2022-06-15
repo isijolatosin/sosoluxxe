@@ -8,17 +8,17 @@ const links = [
 	{
 		id: '1',
 		name: 'Brazillian',
-		route: '/hair-bundles',
+		route: '/all-brazilian',
 	},
 	{
 		id: '2',
 		name: 'Vietnamese',
-		route: '/closure-frontal',
+		route: '/all-vietnamese',
 	},
 	{
 		id: '3',
 		name: 'Indian',
-		route: '/jet-black-&-blonde-hair',
+		route: '/all-indian',
 	},
 ]
 

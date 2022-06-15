@@ -6,9 +6,9 @@ import NotFound from './pages/error'
 import Canceled from './pages/canceled'
 import Success from './pages/success'
 import Management from './pages/management'
-import HairBundles from './pages/hair-bundles'
-import ClosureFrontal from './pages/closure-frontal'
-import JetBlackHair from './pages/jet-black-hairs'
+import Brazilian from './pages/brazilian'
+import Vietnamese from './pages/vietnamese'
+import Indian from './pages/indian'
 import Cart from './pages/cart'
 import Account from './pages/account'
 
@@ -20,9 +20,9 @@ function App() {
 			<Route exact path="/canceled" element={<Canceled />} />
 			<Route exact path="/success" element={<Success />} />
 			<Route exact path="/admin-portal" element={<Management />} />
-			<Route exact path="/hair-bundles" element={<HairBundles />} />
-			<Route exact path="/closure-frontal" element={<ClosureFrontal />} />
-			<Route exact path="/jet-black-&-blonde-hair" element={<JetBlackHair />} />
+			<Route exact path="/all-brazilian" element={<Brazilian />} />
+			<Route exact path="/all-vietnamese" element={<Vietnamese />} />
+			<Route exact path="/all-indian" element={<Indian />} />
 			<Route exact path="/user-cart/:userId" element={<Cart />} />
 			<Route exact path="/user-account" element={<Account />} />
 			<Route exact path="*" element={<NotFound />} />

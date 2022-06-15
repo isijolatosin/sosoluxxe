@@ -1,20 +1,21 @@
 import React, { useContext } from 'react'
 import { Helmet } from 'react-helmet'
-import axios from 'axios'
 import Layout from '../components/shared/Layout'
 import { CgClose } from 'react-icons/cg'
-import Card from '../components/Card3'
+import Card from '../components/Card4'
+import axios from 'axios'
 import { GrCheckmark } from 'react-icons/gr'
 import { selectItemCount } from '../slices/appSlices'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../context/user-context'
+import { MdOutlineConstruction } from 'react-icons/md'
 
-function JetBlackHair() {
+function Vietnamese() {
 	const itemCount = useSelector(selectItemCount)
 	const { user } = useContext(UserContext)
 	const [singleProducts, setSingleproducts] = React.useState(null)
-	const [jetBlackHair, setJetBlackHair] = React.useState([])
+	const [vietnamese, setVietnamese] = React.useState([])
 	const [show, setShow] = React.useState(false)
 	const [sales, setSales] = React.useState(false)
 	const [singleCart, setSingleCart] = React.useState(null)
@@ -31,10 +32,10 @@ function JetBlackHair() {
 			} = await axios.get('/api/v1/products')
 			const filtered = products.filter(
 				(product) =>
-					product.color.toLowerCase() === 'jet black' ||
-					product.color.toLowerCase().includes('blonde613')
+					product.type.toLowerCase() === 'closure' ||
+					product.type.toLowerCase() === 'frontal'
 			)
-			setJetBlackHair(filtered.sort((a, b) => a.name.localeCompare(b.name)))
+			setVietnamese(filtered.sort((a, b) => a.name.localeCompare(b.name)))
 		} catch (error) {
 			console.log(error)
 		}
@@ -44,7 +45,7 @@ function JetBlackHair() {
 		setTimeout(() => {
 			fetchProducts()
 			setShow(true)
-		}, 2000)
+		}, 3000)
 	}, [])
 
 	const scrollToTop = function scrollToTop() {
@@ -64,19 +65,15 @@ function JetBlackHair() {
 	return (
 		<>
 			<Helmet>
-				<title>Jet Black & Blonde Hair</title>
+				<title>Vietnamese</title>
 			</Helmet>
 			<Layout>
 				<div
-					className={
-						sales
-							? `${
-									jetBlackHair.length === 0 && !show
-										? 'tw-pt-[230px] home'
-										: 'tw-pt-[170px] home'
-							  } tw-pb-10 md:tw-pt-[150px] tw-h-full tw-relative tw-bg-neutral-200 tw-flex tw-flex-col tw-items-center tw-mx-auto`
-							: 'tw-pb-10 md:tw-pt-24 tw-pt-32 tw-h-full tw-relative tw-bg-neutral-200 tw-flex tw-flex-col tw-items-center tw-mx-auto'
-					}>
+					className={`${
+						vietnamese.length === 0 && !show
+							? 'tw-pt-[230px] home'
+							: 'tw-pt-[170px] home'
+					} tw-pb-10 md:tw-pt-24 tw-pt-32 tw-h-full tw-relative tw-bg-neutral-200 tw-flex tw-flex-col tw-items-center tw-mx-auto`}>
 					{singleCart && (
 						<div className="tw-absolute bg-blur2 tw-border tw-border-neutral-300 tw-p-10 tw-w-[350px] tw-top-[130px] md:tw-top-[95px] tw-z-10 tw-right-0 md:tw-right-[40px]">
 							<div className="tw-flex tw-items-center">
@@ -112,7 +109,7 @@ function JetBlackHair() {
 							<div
 								onClick={() => setSingleCart(null)}
 								size={25}
-								className="tw-text-center tw-mt-2 tw-border-neutral-300 tw-border-b tw-pb-1 hover:tw-cursor-pointer">
+								className="tw-text-center tw-mt-2 tw-border-b tw-pb-1 hover:tw-cursor-pointer">
 								<span>Continue shopping</span>
 							</div>
 							<div className="tw-absolute tw-top-10 tw-right-5 hover:tw-cursor-pointer">
@@ -120,21 +117,29 @@ function JetBlackHair() {
 							</div>
 						</div>
 					)}
-					{show && jetBlackHair && (
-						<div className="tw-grid tw-grid-cols-2 tw-w-full tw-px-2 md:tw-grid-cols-3 lg:tw-grid-cols-4 xl:tw-grid-cols-5 xl:tw-w-[85%] 2xl:tw-w-[70%] tw-gap-2 md:tw-gap-5">
-							{jetBlackHair.map((item) => (
-								<div
-									key={item._id}
-									className="tw-justify-center tw-items-center tw-flex tw-flex-row">
-									<Card
+					{show && vietnamese && (
+						<div>
+							<div className="tw-grid tw-grid-cols-2 tw-w-full tw-px-2 md:tw-grid-cols-3 lg:tw-grid-cols-4 xl:tw-grid-cols-5 xl:tw-w-[85%] 2xl:tw-w-[70%] tw-gap-2 md:tw-gap-5">
+								{vietnamese.map((item) => (
+									<div
 										key={item._id}
-										product={item}
-										setSingleproducts={setSingleproducts}
-										setSingleCart={setSingleCart}
-										scrollToTop={scrollToTop}
-									/>
+										className="tw-justify-center tw-items-center tw-flex tw-flex-row">
+										<Card
+											key={item._id}
+											product={item}
+											setSingleproducts={setSingleproducts}
+											setSingleCart={setSingleCart}
+											scrollToTop={scrollToTop}
+										/>
+									</div>
+								))}
+							</div>
+							{vietnamese.length === 0 && (
+								<div className="tw-text-4xl tw-text-neutral-500 tw-flex tw-items-center">
+									<MdOutlineConstruction />
+									<span className=" tw-w-full tw-ml-5">UNDER CONSTRUCTION</span>
 								</div>
-							))}
+							)}
 						</div>
 					)}
 					{!show && (
@@ -142,6 +147,7 @@ function JetBlackHair() {
 							<div className="inner"></div>
 						</div>
 					)}
+
 					{singleProducts && (
 						<div className="tw-absolute tw-z-30 tw-h-[100vh] tw-w-[100%] tw-right-0 tw-left-0 tw-top-0 tw-flex tw-flex-row tw-items-start tw-justify-center bg-blur3">
 							<div className="tw-w-[600px] tw-h-[600px]">
@@ -149,7 +155,7 @@ function JetBlackHair() {
 									id={singleProducts?.[0]._id}
 									src={singleProducts?.[0].image}
 									alt={singleProducts?.[0]._id}
-									className="tw-w-[90%] tw-mt-20 tw-mx-auto tw-h-full tw-object-cover tw-mb-1"
+									className="tw-w-[90%] tw-mt-20 tw-mx-auto md:tw-w-[100%] tw-h-full tw-object-cover tw-mb-1"
 								/>
 								<div className="tw-max-w-[90%] tw-mx-auto">
 									<p className="tw-text-xs tw-font-200 tw-tracking-tight tw-text-neutral-900 tw-mb-[1px] bg-blur tw-px-2 tw-leading-6 lg:tw-mt-[150px]">
@@ -173,12 +179,6 @@ function JetBlackHair() {
 										</div>
 									</div>
 								</div>
-								{/* <div className="tw-text-white tw-text-sm tw-font-light tw-max-w-[90%] tw-mx-auto tw-text-center tw-py-2 tw-mt-4 tw-border tw-border-white hover:tw-cursor-pointer hover:tw-opacity-50 tw-ease-in tw-duration-300">
-									<span>Add to cart</span>
-								</div>
-								<div className="tw-text-black tw-text-sm tw-font-light tw-max-w-[90%] tw-mx-auto tw-text-center tw-py-2 tw-mt-4 tw-bg-white hover:tw-cursor-pointer hover:tw-opacity-50 tw-ease-in tw-duration-300">
-									<span>Buy now</span>
-								</div> */}
 								<CgClose
 									onClick={() => setSingleproducts(null)}
 									className="tw-absolute tw-top-[100px] tw-right-10 tw-w-10 tw-h-10 tw-p-3 tw-bg-gray-100 tw-rounded-full hover:tw-cursor-pointer"
@@ -192,4 +192,4 @@ function JetBlackHair() {
 	)
 }
 
-export default JetBlackHair
+export default Vietnamese

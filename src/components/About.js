@@ -4,9 +4,9 @@ function About() {
 	return (
 		<div className="tw-w-full bg-blur">
 			<div className="tw-relative tw-px-10 tw-pt-10 md:tw-w-[80%] md:tw-mx-auto tw-pb-10">
-				<div className="tw-hidden sm:tw-block tw-absolute tw-shadow-lg tw-top-10 tw-left-14 tw-w-[500px] tw-h-[700px] tw-bg-pink-400 sm:tw-rounded-full [clip-path:var(--my-shape)] [shape-outside:var(--my-shape)] sm:[--my-shape:polygon(0%_0%,100%_0%,75%_100%,0%_100%)]"></div>
+				<div className="tw-hidden sm:tw-block tw-absolute tw-shadow-lg tw-top-10 tw-left-14 tw-w-[500px] tw-h-[600px] xl:tw-h-[550px] tw-bg-yellow-500 sm:tw-rounded-full [clip-path:var(--my-shape)] [shape-outside:var(--my-shape)] sm:[--my-shape:polygon(0%_0%,100%_0%,75%_100%,0%_100%)]"></div>
 				<img
-					className="tw-w-[500px] tw-h-[700px] tw-float-left tw-aspect-[1/1] lg:tw-aspect-[1/2] sm:tw-rounded-full tw-shadow-lg tw-object-cover tw-object-center tw-mb-0 tw-mr-6 [clip-path:var(--my-shape)] [shape-outside:var(--my-shape)] sm:[--my-shape:polygon(0%_0%,100%_0%,75%_100%,0%_100%)]"
+					className="tw-w-[500px] tw-h-[600px] xl:tw-h-[550px] tw-float-left tw-aspect-[1/1] lg:tw-aspect-[1/2] sm:tw-rounded-full tw-shadow-lg tw-object-cover tw-object-center tw-mb-0 tw-mr-6 [clip-path:var(--my-shape)] [shape-outside:var(--my-shape)] sm:[--my-shape:polygon(0%_0%,100%_0%,75%_100%,0%_100%)]"
 					src={aboutImg}
 					alt="About_Photo"
 				/>
@@ -17,22 +17,22 @@ function About() {
 					</h3>
 				</div>
 				<p className="tw-text-neutral-100 tw-font-light">
-					Sosoluxxe are many variations of passages of Lorem Ipsum available,
-					but the majority have suffered alteration in some form, by injected
-					humour, or randomised words which don't look even slightly believable.
-					If you are going to use a passage of Lorem Ipsum, you need to be sure
-					there isn't anything embarrassing hidden in the middle of text. All
-					the Lorem Ipsum generators on the Internet tend to repeat predefined
-					chunks as necessary, making this the first true generator on the
-					Internet.
+					Welcome and thank you for visiting Sosoluxxe, we hope you have a nice
+					time browsing through our collection and get some thing for yourself
+					or loved one. Sosoluxxe was born out of my love for looking good and I
+					know to begin that journey you have to be conscious of your crown
+					first which is Hair. A woman’s hair is her crown and once you have
+					that covered, everything else flows. In these day and age wearing
+					luxury hair is almost one that breaks the bank and I want to make sure
+					everyone can afford to look good without necessarily going broke. At
+					Sosoluxxe we are devoted to providing the best luxury human, 100%
+					unprocessed, raw/single donor Hair/Wigs to women of all backgrounds at
+					affordable prices
 					<br />
 					<br />
-					Our mode of serve ranges is simply dummy text of the printing and
-					typesetting industry. Lorem Ipsum has been the industry's standard
-					dummy text ever since the 1500s, when an unknown printer took a galley
-					of type and scrambled it to make a type specimen book. It has survived
-					not only five centuries, but also the leap into electronic
-					typesetting, remaining essentially unchanged.
+					We understand the importance of a woman’s hair to her appearance and
+					we take pride in making sure we provide quality products that will
+					help achieve whatever vision you have for your various hair styles.
 					<br />
 					<br />
 					<span className="tw-italic tw-text-sm tw-font-semibold tw-text-left">
@@ -41,19 +41,21 @@ function About() {
 					</span>
 					<br />
 					<br />
-					Beauty don’t cost much Contrary to popular belief, Lorem Ipsum is not
-					simply random text. It has roots in a piece of classical Latin
-					literature from 45 BC, making it over 2000 years old. Richard
-					McClintock, a Latin professor at Hampden-Sydney College in Virginia,
-					looked up one of the more obscure Latin words, consectetur, from a
-					Lorem Ipsum passage, and going through the cites of the word in
-					classical literature, discovered the undoubtable source.
+					Sosoluxxe hair is easy to wear and maintain. You can color, curl,
+					straighten as desired and with the right maintenance our hair is
+					guaranteed long lasting and reusable.
 					<br />
 					<br />
-					But I must explain to you how all this mistaken idea of denouncing
-					pleasure and praising pain was born and I will give you a complete
-					account of the system, and expound the actual teachings of the great
-					explorer of the truth, the master-builder of human happiness.
+					Though situated in Canada, our clientele stretches across borders and
+					we deliver worldwide, packaging your hair with love and care to make
+					sure it arrives to you on time.
+					<br />
+					<br />
+					Please feel free to follow us on all our social media handles below
+					and email us if you have any inquires or concern.
+					<br />
+					<br />
+					We can’t wait to serve you and see you rock your beautiful crowns❤️
 					<br />
 					<br />
 					<span className="tw-italic tw-text-sm tw-font-semibold tw-text-left">

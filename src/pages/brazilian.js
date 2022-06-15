@@ -1,23 +1,24 @@
 import React, { useContext } from 'react'
 import { Helmet } from 'react-helmet'
-import Layout from '../components/shared/Layout'
-import { CgClose } from 'react-icons/cg'
-import Card from '../components/Card4'
 import axios from 'axios'
+import { CgClose } from 'react-icons/cg'
 import { GrCheckmark } from 'react-icons/gr'
+import Layout from '../components/shared/Layout'
+import Card from '../components/Card2'
 import { selectItemCount } from '../slices/appSlices'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../context/user-context'
+import { MdOutlineConstruction } from 'react-icons/md'
 
-function ClosureFrontal() {
+function Brazilian() {
 	const itemCount = useSelector(selectItemCount)
 	const { user } = useContext(UserContext)
+	const [brazilian, setBrazilian] = React.useState([])
 	const [singleProducts, setSingleproducts] = React.useState(null)
-	const [closureFrontal, setClosureFrontal] = React.useState([])
+	const [singleCart, setSingleCart] = React.useState(null)
 	const [show, setShow] = React.useState(false)
 	const [sales, setSales] = React.useState(false)
-	const [singleCart, setSingleCart] = React.useState(null)
 	const navigate = useNavigate()
 
 	React.useEffect(() => {
@@ -30,11 +31,9 @@ function ClosureFrontal() {
 				data: { products },
 			} = await axios.get('/api/v1/products')
 			const filtered = products.filter(
-				(product) =>
-					product.type.toLowerCase() === 'closure' ||
-					product.type.toLowerCase() === 'frontal'
+				(product) => product.color.toLowerCase() === 'natural black'
 			)
-			setClosureFrontal(filtered.sort((a, b) => a.name.localeCompare(b.name)))
+			setBrazilian(filtered.sort((a, b) => a.name.localeCompare(b.name)))
 		} catch (error) {
 			console.log(error)
 		}
@@ -64,19 +63,15 @@ function ClosureFrontal() {
 	return (
 		<>
 			<Helmet>
-				<title>Closure & Frontal</title>
+				<title>Brazilian</title>
 			</Helmet>
 			<Layout>
 				<div
-					className={
-						sales
-							? `${
-									closureFrontal.length === 0 && !show
-										? 'tw-pt-[230px] home'
-										: 'tw-pt-[170px] home'
-							  } tw-pb-10 md:tw-pt-[150px] tw-h-full tw-relative tw-bg-neutral-200 tw-flex tw-flex-col tw-items-center tw-mx-auto`
-							: 'tw-pb-10 md:tw-pt-24 tw-pt-32 tw-h-full tw-relative tw-bg-neutral-200 tw-flex tw-flex-col tw-items-center tw-mx-auto'
-					}>
+					className={`${
+						brazilian.length === 0 && !show
+							? 'tw-pt-[230px] home'
+							: 'tw-pt-[170px] home'
+					} tw-pb-10 md:tw-pt-24 tw-pt-32 tw-h-full tw-relative tw-bg-neutral-200 tw-flex tw-flex-col tw-items-center tw-mx-auto`}>
 					{singleCart && (
 						<div className="tw-absolute bg-blur2 tw-border tw-border-neutral-300 tw-p-10 tw-w-[350px] tw-top-[130px] md:tw-top-[95px] tw-z-10 tw-right-0 md:tw-right-[40px]">
 							<div className="tw-flex tw-items-center">
@@ -120,21 +115,29 @@ function ClosureFrontal() {
 							</div>
 						</div>
 					)}
-					{show && closureFrontal && (
-						<div className="tw-grid tw-grid-cols-2 tw-w-full tw-px-2 md:tw-grid-cols-3 lg:tw-grid-cols-4 xl:tw-grid-cols-5 xl:tw-w-[85%] 2xl:tw-w-[70%] tw-gap-2 md:tw-gap-5">
-							{closureFrontal.map((item) => (
-								<div
-									key={item._id}
-									className="tw-justify-center tw-items-center tw-flex tw-flex-row">
-									<Card
-										key={item._id}
-										product={item}
-										setSingleproducts={setSingleproducts}
-										setSingleCart={setSingleCart}
-										scrollToTop={scrollToTop}
-									/>
+					{show && brazilian && (
+						<div>
+							<div className="tw-grid tw-grid-cols-2 tw-w-full tw-px-2 md:tw-grid-cols-3 lg:tw-grid-cols-4 xl:tw-grid-cols-5 xl:tw-w-[85%] 2xl:tw-w-[70%] tw-gap-2 md:tw-gap-5">
+								{brazilian.map((item) => (
+									<div
+										className="tw-justify-center tw-items-center tw-flex tw-flex-row"
+										key={item._id}>
+										<Card
+											key={item._id}
+											product={item}
+											setSingleproducts={setSingleproducts}
+											setSingleCart={setSingleCart}
+											scrollToTop={scrollToTop}
+										/>
+									</div>
+								))}
+							</div>
+							{brazilian.length === 0 && (
+								<div className="tw-text-4xl tw-text-neutral-500 tw-flex tw-items-center">
+									<MdOutlineConstruction />
+									<span className=" tw-w-full tw-ml-5">UNDER CONSTRUCTION</span>
 								</div>
-							))}
+							)}
 						</div>
 					)}
 					{!show && (
@@ -150,7 +153,7 @@ function ClosureFrontal() {
 									id={singleProducts?.[0]._id}
 									src={singleProducts?.[0].image}
 									alt={singleProducts?.[0]._id}
-									className="tw-w-[90%] tw-mt-20 tw-mx-auto md:tw-w-[100%] tw-h-full tw-object-cover tw-mb-1"
+									className="tw-w-[90%] tw-mt-20 tw-mx-auto tw-h-full tw-object-cover tw-mb-1"
 								/>
 								<div className="tw-max-w-[90%] tw-mx-auto">
 									<p className="tw-text-xs tw-font-200 tw-tracking-tight tw-text-neutral-900 tw-mb-[1px] bg-blur tw-px-2 tw-leading-6 lg:tw-mt-[150px]">
@@ -187,4 +190,4 @@ function ClosureFrontal() {
 	)
 }
 
-export default ClosureFrontal
+export default Brazilian

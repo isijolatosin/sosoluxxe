@@ -36,14 +36,10 @@ function Footer() {
 	const links = [
 		{
 			id: 1,
-			name: 'Search',
-		},
-		{
-			id: 2,
 			name: 'Contact Us',
 		},
 		{
-			id: 3,
+			id: 2,
 			name: 'Terms and Conditions',
 		},
 	]
@@ -73,8 +69,8 @@ function Footer() {
 	}
 
 	return (
-		<footer className="tw-flex tw-bg-white tw-flex-col tw-py-5 tw-justify-center tw-items-center tw-border-t-[1px] tw-border-neutral-300">
-			<span className="tw-text-center tw-mb-5 tw-text-sm tw-font-light">
+		<footer className="tw-flex tw-bg-neutral-900 tw-flex-col tw-py-5 tw-justify-center tw-items-center tw-border-t-[1px] tw-border-neutral-300">
+			<span className="tw-text-center tw-text-white tw-mb-5 tw-text-sm tw-font-light">
 				Quick Links
 			</span>
 			<ul className="tw-flex tw-flex-row tw-justify-center tw-text-xs tw-font-light tw-mb-1">
@@ -167,7 +163,7 @@ function Footer() {
 				</form>
 			)}
 			{showTerms && (
-				<div className="tw-w-[80%] tw-text-sm tw-font-light">
+				<div className="tw-w-[80%] tw-text-sm tw-font-light tw-text-white">
 					<div className="tw-text-center tw-mb-4 tw-mt-5 tw-font-light tw-text-lg tw-uppercase tw-border-b">
 						<span>Terms and Services</span>
 					</div>
@@ -650,7 +646,7 @@ function Footer() {
 					</p>
 				</div>
 			)}
-			<div className="tw-border-t tw-border-b tw-border-neutral-100 tw-w-full tw-flex tw-flex-col tw-mt-5 tw-mb-5 tw-pb-5 tw-pt-5 tw-items-center">
+			<div className="tw-border-t tw-border-b tw-border-neutral-700 tw-w-full tw-flex tw-flex-col tw-mt-5 tw-mb-5 tw-pb-5 tw-pt-5 tw-items-center">
 				<span className="tw-text-xs tw-font-light tw-tracking-widest tw-text-black tw-mb-1">
 					Country/region
 				</span>

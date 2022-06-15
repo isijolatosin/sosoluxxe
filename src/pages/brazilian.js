@@ -18,12 +18,7 @@ function Brazilian() {
 	const [singleProducts, setSingleproducts] = React.useState(null)
 	const [singleCart, setSingleCart] = React.useState(null)
 	const [show, setShow] = React.useState(false)
-	const [sales, setSales] = React.useState(false)
 	const navigate = useNavigate()
-
-	React.useEffect(() => {
-		setSales(localStorage.getItem('isSales'))
-	}, [])
 
 	async function fetchProducts() {
 		try {

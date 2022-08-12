@@ -10,12 +10,7 @@ function About() {
 					src={aboutImg}
 					alt="About_Photo"
 				/>
-				<h1 className="tw-text-2xl tw-font-bold">ABOUT SOSOLUXXE</h1>
-				<div className="tw-relative">
-					<h3 className="tw-font-semibold tw-text-neutral-400 tw-mb-[15px]">
-						OFFERING THE BEST HAIR PRODUCTS
-					</h3>
-				</div>
+				<h1 className="tw-text-2xl tw-font-bold tw-mb-5">ABOUT SOSOLUXXE</h1>
 				<p className="tw-text-neutral-100 tw-font-light">
 					Welcome and thank you for visiting Sosoluxxe, we hope you have a nice
 					time browsing through our collection and get some thing for yourself
@@ -33,12 +28,6 @@ function About() {
 					We understand the importance of a woman’s hair to her appearance and
 					we take pride in making sure we provide quality products that will
 					help achieve whatever vision you have for your various hair styles.
-					<br />
-					<br />
-					<span className="tw-italic tw-text-sm tw-font-semibold tw-text-left">
-						{' '}
-						...we serve everyone and leave no one behind!
-					</span>
 					<br />
 					<br />
 					Sosoluxxe hair is easy to wear and maintain. You can color, curl,
